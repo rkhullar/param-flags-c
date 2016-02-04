@@ -9,10 +9,26 @@
 
 int main(int argc, char **argv)
 {
-    int i;
-    for(i=1; i<argc; i++)
+    int n = 1;
+    char *msg = "Hello World";
+
+    int i = 1;
+    char flag;
+    while(i < argc)
     {
-        printf("%s\n", argv[i]);
+        if(argv[i][0] == '-')
+        {
+            flag = argv[i][1];
+            if(flag == 'm')
+                msg = argv[++i];
+            if(flag == 'n')
+                n = atoi(argv[++i]);
+        }
+        i++;
     }
+
+    for(i = 0; i < n; i++)
+        printf("%s\n", msg);
+
     return 0;
 }
